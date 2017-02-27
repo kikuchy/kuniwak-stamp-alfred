@@ -96,9 +96,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Keywords are one of Alfred's most commonly used and most useful ways of launching actions. Set a keyword and connect it to the action(s) you want to perform.
-
-Type your keyword into Alfred, followed by your input text if needed, and you'll be on your way to boosting your productivity!</string>
+	<string></string>
 	<key>uidata</key>
 	<dict>
 		<key>23AB92CF-1CAA-4438-A003-574C45AC3FFF</key>
@@ -119,6 +117,6 @@ Type your keyword into Alfred, followed by your input text if needed, and you'll
 	<key>version</key>
 	<string>1.1</string>
 	<key>webaddress</key>
-	<string>https://www.github.com/kikuchy</string>
+	<string>https://github.com/kikuchy/kuniwak-stamp-alfred</string>
 </dict>
 </plist>
