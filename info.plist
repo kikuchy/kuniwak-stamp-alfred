@@ -71,26 +71,9 @@
 				<key>runningsubtext</key>
 				<string>Fetching stamps...</string>
 				<key>script</key>
-				<string>require 'net/http'
-require 'uri'
-require 'json'
+				<string>query=$1
 
-query = ARGV[0]
-pattern = Regexp.new("^#{query}")
-
-
-print JSON.generate({
-  :items =&gt; JSON.parse(Net::HTTP.get(URI.parse("https://api.github.com/repos/Kuniwak/stamp/git/trees/f63fa09c62af9e1bc2ffecd6edeedea477bf2912")))["tree"].map {|stamp|
-    {
-      :title =&gt; stamp["path"].split(".")[0],
-      :arg =&gt; stamp["path"].split(".")[0],
-      :uid =&gt; stamp["sha"],
-      :icon =&gt; {
-        :path =&gt; stamp["url"]
-      }
-    }
-  }
-})</string>
+/usr/bin/ruby stamp.rb $query</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -100,7 +83,7 @@ print JSON.generate({
 				<key>title</key>
 				<string>Copy Kuniwak's stamp</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
