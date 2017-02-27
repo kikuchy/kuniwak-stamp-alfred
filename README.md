@@ -1,7 +1,16 @@
 # Kuniwak's stamp selector for alfred
 
--> [Kuniwak's stamp](https://raw.githubusercontent.com/Kuniwak/stamp/)
+-> [Kuniwak's stamp](https://github.com/Kuniwak/stamp/)
 
+
+![Screenshot](./screenshot.png)
+
+# Install
+
+1. Download latest `.alfredworkflow` file from [Release page](https://github.com/kikuchy/kuniwak-stamp-alfred/releases).
+2. Open it.
+3. Type `kuniwak` at Alfred.
+4. Enjoy!
 
 # License
 
