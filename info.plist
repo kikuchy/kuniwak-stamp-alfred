@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>net.kikuchy.alfred.kuniwakstamp</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>48BD0553-68AA-4936-BE1C-60B7C41B7BDF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>23AB92CF-1CAA-4438-A003-574C45AC3FFF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Kikuchy</string>
+	<key>description</key>
+	<string>Shortcut for Kuniwak's stamps</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Kuniwak's Stamp</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>http://stamp.kuniwak.com/{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>23AB92CF-1CAA-4438-A003-574C45AC3FFF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>kuniwak</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Fetching stamps...</string>
+				<key>script</key>
+				<string>require 'net/http'
+require 'uri'
+require 'json'
+
+query = ARGV[0]
+pattern = Regexp.new("^#{query}")
+
+
+print JSON.generate({
+  :items =&gt; JSON.parse(Net::HTTP.get(URI.parse("https://api.github.com/repos/Kuniwak/stamp/git/trees/f63fa09c62af9e1bc2ffecd6edeedea477bf2912")))["tree"].map {|stamp|
+    {
+      :title =&gt; stamp["path"].split(".")[0],
+      :arg =&gt; stamp["path"].split(".")[0],
+      :uid =&gt; stamp["sha"],
+      :icon =&gt; {
+        :path =&gt; stamp["url"]
+      }
+    }
+  }
+})</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Copy the stamp url named '{query}'</string>
+				<key>title</key>
+				<string>Copy Kuniwak's stamp</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>48BD0553-68AA-4936-BE1C-60B7C41B7BDF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Keywords are one of Alfred's most commonly used and most useful ways of launching actions. Set a keyword and connect it to the action(s) you want to perform.
+
+Type your keyword into Alfred, followed by your input text if needed, and you'll be on your way to boosting your productivity!</string>
+	<key>uidata</key>
+	<dict>
+		<key>23AB92CF-1CAA-4438-A003-574C45AC3FFF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>270</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+		<key>48BD0553-68AA-4936-BE1C-60B7C41B7BDF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.1</string>
+	<key>webaddress</key>
+	<string>https://www.github.com/kikuchy</string>
+</dict>
+</plist>
